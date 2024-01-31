@@ -1,18 +1,17 @@
 package com.example.employeemanagement.dto;
 
+import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 
-@Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Setter
+@Getter
 public class EmployeeRequest {
-    @NotBlank
+    @NotBlank(message = "name should not be empty")
     private String name;
-
-    @NotBlank
+    @NotBlank(message = "email should not be empty")
     private String email;
-
     private String department;
 }

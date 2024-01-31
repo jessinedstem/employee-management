@@ -6,6 +6,9 @@ import lombok.*;
 @NoArgsConstructor
 @Builder
 @Setter
-@Data
 public class EmployeeResponse {
+    private long employeeId;
+    private String name;
+    private String email;
+    private String department;
 }
