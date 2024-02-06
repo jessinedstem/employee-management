@@ -1,0 +1,97 @@
+{
+	"info": {
+		"_postman_id": "6cf4eb67-de36-485c-b1c4-5a2243c681e1",
+		"name": "EmployeeManagement",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30274173"
+	},
+	"item": [
+		{
+			"name": "Add employee",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"Steve\",\r\n    \"email\":\"stevenn@gmail.com\",\r\n    \"department\":\"ECE\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/employee/add-employee",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"employee",
+						"add-employee"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get employee Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/employee/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"employee",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Employee By Department",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/employee/get-byDepartment?department=ECE",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"employee",
+						"get-byDepartment"
+					],
+					"query": [
+						{
+							"key": "department",
+							"value": "ECE"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
