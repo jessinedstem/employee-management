@@ -1,4 +1,4 @@
-package com.example.employeemanagement.dto;
+package com.example.employeemanagement.contract;
 
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;
@@ -6,12 +6,12 @@ import lombok.*;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Setter
 @Getter
 public class EmployeeRequest {
     @NotBlank(message = "name should not be empty")
     private String name;
     @NotBlank(message = "email should not be empty")
     private String email;
+    @NotBlank(message = "department should not be empty")
     private String department;
 }

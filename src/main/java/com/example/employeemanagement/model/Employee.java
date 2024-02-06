@@ -8,8 +8,6 @@ import jakarta.persistence.GenerationType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
-
-
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
@@ -17,7 +15,7 @@ import lombok.NoArgsConstructor;
 @Builder
 public class Employee {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long employeeId;
     private String name;
     private String email;

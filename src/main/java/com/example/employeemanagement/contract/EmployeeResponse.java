@@ -1,11 +1,13 @@
-package com.example.employeemanagement.dto;
+package com.example.employeemanagement.contract;
 
-import lombok.*;
-
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Setter
+@Getter
 public class EmployeeResponse {
     private long employeeId;
     private String name;
