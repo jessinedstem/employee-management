@@ -5,44 +5,46 @@ import com.example.employeemanagement.contract.EmployeeResponse;
 import com.example.employeemanagement.exception.EmployeeNotFoundException;
 import com.example.employeemanagement.model.Employee;
 import com.example.employeemanagement.repository.EmployeeRepository;
+import java.util.List;
+import java.util.stream.Collectors;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
-import java.util.Locale;
-import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 public class EmployeeService {
     private final EmployeeRepository employeeRepository;
     private final ModelMapper modelMapper;
+
     @Autowired
-            public EmployeeService(EmployeeRepository employeeRepository,ModelMapper modelMapper)
-    {
-        this.employeeRepository=employeeRepository;
-        this.modelMapper=modelMapper;
+    public EmployeeService(EmployeeRepository employeeRepository, ModelMapper modelMapper) {
+        this.employeeRepository = employeeRepository;
+        this.modelMapper = modelMapper;
     }
 
     public EmployeeResponse addEmployee(EmployeeRequest employeeRequest) {
-        Employee employee= Employee.builder()
-                .name(employeeRequest.getName())
-                .email(employeeRequest.getEmail().toLowerCase().trim())
-                .department(employeeRequest.getDepartment().toLowerCase().trim())
-                .build();
-        Employee saved=employeeRepository.save(employee);
-        return modelMapper.map(saved,EmployeeResponse.class);
+        Employee employee =
+                Employee.builder()
+                        .name(employeeRequest.getName())
+                        .email(employeeRequest.getEmail().toLowerCase().trim())
+                        .department(employeeRequest.getDepartment().toLowerCase().trim())
+                        .build();
+        Employee saved = employeeRepository.save(employee);
+        return modelMapper.map(saved, EmployeeResponse.class);
     }
+
     public EmployeeResponse findEmployeeById(Long employeeId) {
-        Employee employee = employeeRepository.findById(employeeId)
-                .orElseThrow(()->new EmployeeNotFoundException("Employee Not Found"));
+        Employee employee =
+                employeeRepository
+                        .findById(employeeId)
+                        .orElseThrow(() -> new EmployeeNotFoundException("Employee Not Found"));
         return modelMapper.map(employee, EmployeeResponse.class);
     }
+
     public List<EmployeeResponse> getEmployeesByDepartment(String department) {
-        List<Employee> employeeList=employeeRepository.findByDepartmentIgnoreCase(department);
+        List<Employee> employeeList = employeeRepository.findByDepartmentIgnoreCase(department);
         return employeeList.stream()
-                .map(employee -> modelMapper.map(employee,EmployeeResponse.class))
+                .map(employee -> modelMapper.map(employee, EmployeeResponse.class))
                 .collect(Collectors.toList());
     }
 }
