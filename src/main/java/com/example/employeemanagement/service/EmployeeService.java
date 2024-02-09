@@ -43,8 +43,13 @@ public class EmployeeService {
 
     public List<EmployeeResponse> getEmployeesByDepartment(String department) {
         List<Employee> employeeList = employeeRepository.findByDepartmentIgnoreCase(department);
-        return employeeList.stream()
-                .map(employee -> modelMapper.map(employee, EmployeeResponse.class))
-                .collect(Collectors.toList());
+        if(employeeList.isEmpty()){
+            throw new EmployeeNotFoundException("No employees in this department");
+        }else {
+
+            return employeeList.stream()
+                    .map(employee -> modelMapper.map(employee, EmployeeResponse.class))
+                    .collect(Collectors.toList());
+        }
     }
 }
