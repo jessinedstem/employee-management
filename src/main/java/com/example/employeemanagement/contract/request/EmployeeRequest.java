@@ -1,7 +1,11 @@
-package com.example.employeemanagement.contract;
+package com.example.employeemanagement.contract.request;
 
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Builder
 @AllArgsConstructor
@@ -12,6 +16,7 @@ public class EmployeeRequest {
     private String name;
 
     @NotBlank(message = "email should not be empty")
+    @Email(message = "Email should be valid")
     private String email;
 
     @NotBlank(message = "department should not be empty")
