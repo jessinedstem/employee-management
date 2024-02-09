@@ -7,8 +7,8 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import com.example.employeemanagement.contract.EmployeeRequest;
-import com.example.employeemanagement.contract.EmployeeResponse;
+import com.example.employeemanagement.contract.request.EmployeeRequest;
+import com.example.employeemanagement.contract.response.EmployeeResponse;
 import com.example.employeemanagement.service.EmployeeService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.ArrayList;

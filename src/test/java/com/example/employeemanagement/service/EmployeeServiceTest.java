@@ -4,8 +4,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.*;
 
-import com.example.employeemanagement.contract.EmployeeRequest;
-import com.example.employeemanagement.contract.EmployeeResponse;
+import com.example.employeemanagement.contract.request.EmployeeRequest;
+import com.example.employeemanagement.contract.response.EmployeeResponse;
 import com.example.employeemanagement.exception.EmployeeNotFoundException;
 import com.example.employeemanagement.model.Employee;
 import com.example.employeemanagement.repository.EmployeeRepository;
@@ -121,9 +121,6 @@ public class EmployeeServiceTest {
         mockEmployeeResponseList.add(mockEmployeeResponseList1);
         mockEmployeeResponseList.add(mockEmployeeResponseList2);
         when(employeeRepository.findByDepartmentIgnoreCase("EEE")).thenReturn(mockEmployee);
-        //
-        // when(mockEmployee.stream().map(mockEmp->modelMapper.map(mockEmp,EmployeeResponse.class)))
-        //                .thenReturn(List.of(mockEmployeeResponseList1,mockEmployeeResponseList2));
         List<EmployeeResponse> actualResponse = employeeService.getEmployeesByDepartment("EEE");
         assertEquals(2, actualResponse.size());
     }

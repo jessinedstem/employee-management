@@ -1,7 +1,7 @@
 package com.example.employeemanagement.service;
 
-import com.example.employeemanagement.contract.EmployeeRequest;
-import com.example.employeemanagement.contract.EmployeeResponse;
+import com.example.employeemanagement.contract.request.EmployeeRequest;
+import com.example.employeemanagement.contract.response.EmployeeResponse;
 import com.example.employeemanagement.exception.EmployeeNotFoundException;
 import com.example.employeemanagement.model.Employee;
 import com.example.employeemanagement.repository.EmployeeRepository;
